@@ -20,7 +20,7 @@ namespace ConsoleApp3
             double[][] Marks = new double[][]
                 {
                    new double[]{ 1.0,           2.0,           3.0,           4.0,           5.0, 6.0,           7.0,           8.0,           9.0, 10},
-                   new double[]{  -2.8163681 ,  6.61870804,  5.64326878,  5.75263182, 10.27707358, 9.05594692, 10.83523009, 18.78381063, 18.97192527, 20.81448087 }
+                   new double[]{ 2.73446908 ,  4.35122722 ,  7.21132988,  11.24872601,   9.58103444 ,12.09865079 , 13.78706794 , 13.85301221 , 15.29003911 , 18.0998018 }
                   
                 };
 
@@ -69,10 +69,10 @@ namespace ConsoleApp3
             IList<double[]> eigv = Matrix.DecomposeMatrixToColumnVectors(eigenvectors);
             Matrix.Print(NewData);
             //double a = NewData[8];
-            double[][] XRestored;
-            XRestored = Matrix.Dot(NewData, eigv[1]);
-            Console.WriteLine();
-            Matrix.Print(XRestored);   
+            //double[][] XRestored;
+            //XRestored = Matrix.Dot(NewData, eigv[1]);
+            //Console.WriteLine();
+            //Matrix.Print(XRestored);   
                 
             
 

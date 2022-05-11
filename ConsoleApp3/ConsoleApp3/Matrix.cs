@@ -261,7 +261,7 @@ namespace ConsoleApp3
             {
                 for (int j = 0; j < b.Length; j++)
                 {
-                    dot[1][i]+= a[i][j] * b[j];
+                    dot[1][i]+= a[j][i] * b[j];
                 }
             }
             return dot;
