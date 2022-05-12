@@ -8,10 +8,7 @@ namespace ConsoleApp3
 {
     internal class Vector
     {
-        public static double Mean(double[] X)
-        {
-            return X.Sum() / X.Length;
-        }
+        public static double Mean(double[] X) => Math.Round(X.Sum() / X.Length,2);
 
         public static double Spread(double[] X, double mean)
         {

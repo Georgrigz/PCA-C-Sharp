@@ -17,24 +17,31 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
 
-            double[][] Marks = new double[][]
+            
+            double[][] marks = new double[][]
                 {
-                   new double[]{ 1.0,           2.0,           3.0,           4.0,           5.0, 6.0,           7.0,           8.0,           9.0, 10},
-                   new double[]{ 2.73446908 ,  4.35122722 ,  7.21132988,  11.24872601,   9.58103444 ,12.09865079 , 13.78706794 , 13.85301221 , 15.29003911 , 18.0998018 }
+                   new double[]{ 2.5, 0.5, 2.2, 1.9, 3.1, 2.3, 2.0, 1.0, 1.5, 1.1},
+                   new double[]{ 2.4, 0.7, 2.9, 2.2, 3.0, 2.7, 1.6, 1.1, 1.6, 0.9 },
+                    new double[]{ 2.5, 0.5, 2.2, 1.9, 3.1,2.7, 1.6, 1.1, 1.6, 0.9 }
                   
                 };
+            double[] Means = new double[marks.Length];
+            
+            for (int i = 0; i < marks.Length; i++)
+            {
+                Means[i] = Vector.Mean(marks[i]);
+            }
+            
+            
 
-            double Xmean = Vector.Mean(Marks[0]);
-            double Ymean = Vector.Mean(Marks[1]);
-
-            Console.WriteLine(Xmean+"   "+Ymean);
+            Vector.Print(Means);
             Console.WriteLine(  );
             Console.WriteLine("Начальная матрица");
-            Matrix.Print(Marks);
+            Matrix.Print(marks);
 
             Console.WriteLine();
             Console.WriteLine("Коварационная матрица");
-            var cov = Matrix.MatrixCovariance(Marks);
+            var cov = Matrix.MatrixCovariance(marks);
             Matrix.Print(cov);
 
             Console.WriteLine();
@@ -54,7 +61,7 @@ namespace ConsoleApp3
             eigenvectors = Matrix.MatrixTranspose(eigenvectors);
             Console.WriteLine();
 
-            var MeanDATA = Matrix.Meaning(Marks);
+            var MeanDATA = Matrix.Meaning(marks);
             Console.WriteLine("Средние значения");
             Matrix.Print(MeanDATA);
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -64,10 +71,20 @@ namespace ConsoleApp3
 
             Console.ReadKey();
             MeanDATA = Matrix.MatrixTranspose(MeanDATA);
-            double[][] NewData = Matrix.MatrixCreate(1, MeanDATA[0].Length);
-            NewData = Matrix.Dot(MeanDATA,  eigenvectors[1]);
+            //double[]NewData = Matrix.MatrixCreate(1, MeanDATA[0].Length);
+            double []NewData = Matrix.Dot(MeanDATA,  eigenvectors[1]);
             IList<double[]> eigv = Matrix.DecomposeMatrixToColumnVectors(eigenvectors);
-            Matrix.Print(NewData);
+            Vector.Print(NewData);
+            Console.WriteLine();
+            Console.WriteLine(NewData[8]);
+            double[] Xrestored = Vector.ScalarToVectorProduct(NewData[9], eigenvectors[1]);
+
+            for (int i = 0; i < Xrestored.Length; i++)
+            {
+                Xrestored[i] += Means[i];
+            }
+
+            Vector.Print(Xrestored);
             //double a = NewData[8];
             //double[][] XRestored;
             //XRestored = Matrix.Dot(NewData, eigv[1]);

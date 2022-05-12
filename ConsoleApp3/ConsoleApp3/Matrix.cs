@@ -46,7 +46,7 @@ namespace ConsoleApp3
                 double mean = Vector.Mean(matrix[i]);
                 for (int j = 0; j < matrix[i].Length; j++)
                 {
-                    matrix[i][j] = matrix[i][j] - mean;
+                    matrix[i][j] = Math.Round(matrix[i][j] - mean,2);
                 }
             }
             return matrix;
@@ -252,39 +252,36 @@ namespace ConsoleApp3
             } // основной цикл по столбцу j
             return result;
         }
-        public static double[][] Dot(double[][] a, double[] b)
+        public static double[] Dot(double[][] a, double[] b)
         {
-            //b = Vector.Reverse(b);
-            double[][] dot = MatrixCreate(1, a[0].Length);
-            //double res = 0;
-            for (int i = 0; i < a.Length; i++)
+            double[] dot = new double[a.Length];
+            for (int i = 0; i < dot.Length; i++)
             {
                 for (int j = 0; j < b.Length; j++)
                 {
-                    dot[1][i]+= a[j][i] * b[j];
+                    dot[i] += a[i][j] * b[j];
                 }
             }
             return dot;
+
         }
 
         public static double[][] MatrixTranspose(double[][] matrix)
         {
-            var mat = ConvertArrArrToMatr(matrix);
+            int w = matrix.Length;
+            int h = matrix[0].Length;
 
-            int w = mat.GetLength(0);
-            int h = mat.GetLength(1);
-
-            double[,] result = new double[h, w];
+            double[][] result = MatrixCreate(h, w);
 
             for (int i = 0; i < w; i++)
             {
                 for (int j = 0; j < h; j++)
                 {
-                    result[j, i] = mat[i, j];
+                    result[j][ i] = matrix[i][j];
                 }
             }
 
-            return ConvertMatrToArrArr(result);
+            return result;
         }
 
         static double[][] MatrixDuplicate(double[][] matrix)
@@ -296,18 +293,8 @@ namespace ConsoleApp3
                     result[i][j] = matrix[i][j];
             return result;
         }
-        public static double MatrixDeterminant(double[][] matrix)
-        {
-            int[] perm;
-            int toggle;
-            double[][] lum = MatrixDecompose(matrix, out perm, out toggle);
-            if (lum == null)
-                throw new Exception("Unable to compute MatrixDeterminant");
-            double result = toggle;
-            for (int i = 0; i < lum.Length; ++i)
-                result *= lum[i][i];
-            return result;
-        }
+        
+        
 
         public static double[][] MatrixCreate(int rows, int cols)
         {

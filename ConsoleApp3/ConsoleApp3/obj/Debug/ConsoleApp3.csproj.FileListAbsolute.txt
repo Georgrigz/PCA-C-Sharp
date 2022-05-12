@@ -31,3 +31,14 @@ C:\Users\User\Documents\GitHub\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\Con
 C:\Users\User\Documents\GitHub\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe
 C:\Users\User\Documents\GitHub\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\bin\Debug\nunit.framework.dll
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\bin\Debug\nunit.framework.xml
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.AssemblyReference.cache
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.SuggestedBindingRedirects.cache
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CoreCompileInputs.cache
+C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CopyComplete
