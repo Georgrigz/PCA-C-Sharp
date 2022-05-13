@@ -82,11 +82,12 @@ namespace ConsoleApp3
 
         public static double[] ScalarToVectorProduct(double k, double[] a)// Произведение числа на вектор
         {
+            double[] res = new double[a.Length];
             for (int i = 0; i < a.Length; i++)
             {
-                a[i] = a[i] * k;
+                res[i] = Math.Round(a[i] * k,2);
             }
-            return a;
+            return res;
         }
 
         public static double NormOfVector(double[] vector)
@@ -104,8 +105,9 @@ namespace ConsoleApp3
             for (int i = 0; i < Vector.Length; i++)
             {
                 Console.Write($"{Vector[i],5} "); //ВЫВОД матрицы  
-
             }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
         }
 
         public static double[] Reverse(double[] a)

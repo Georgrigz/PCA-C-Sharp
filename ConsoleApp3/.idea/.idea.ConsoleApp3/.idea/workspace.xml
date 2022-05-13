@@ -68,7 +68,8 @@
       <option name="presentableId" value="Default" />
       <updated>1652300360201</updated>
       <workItem from="1652300360207" duration="1390000" />
-      <workItem from="1652301868910" duration="6308000" />
+      <workItem from="1652301868910" duration="6491000" />
+      <workItem from="1652456511655" duration="9760000" />
     </task>
     <servers />
   </component>
@@ -90,5 +91,28 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ConsoleApp3/Program.cs</url>
+          <line>88</line>
+          <properties documentPath="C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\Program.cs" initialLine="89" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="3111" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3187" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

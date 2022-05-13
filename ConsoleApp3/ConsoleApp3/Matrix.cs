@@ -41,15 +41,16 @@ namespace ConsoleApp3
 
         public static double[][] Meaning(double[][] matrix)
         {
+            double[][] res = MatrixCreate(matrix.Length, matrix[0].Length);
             for (int i = 0; i < matrix.Length; i++)
             {
                 double mean = Vector.Mean(matrix[i]);
                 for (int j = 0; j < matrix[i].Length; j++)
                 {
-                    matrix[i][j] = Math.Round(matrix[i][j] - mean,2);
+                    res[i][j] = Math.Round(matrix[i][j] - mean,2);
                 }
             }
-            return matrix;
+            return res;
         }
 
         public static IList<double[][]> QRGramShmidt(double[][] a)
@@ -233,9 +234,7 @@ namespace ConsoleApp3
                 }
                 if (pRow != j) // перестановка строк
                 {
-                    double[] rowPtr = result[pRow];
-                    result[pRow] = result[j];
-                    result[j] = rowPtr;
+                    (result[pRow], result[j]) = (result[j], result[pRow]);
                     int tmp = perm[pRow]; // Меняем информацию о перестановке
                     perm[pRow] = perm[j];
                     perm[j] = tmp;
@@ -371,11 +370,11 @@ namespace ConsoleApp3
                 for (int j = 0; j < Matr[i].Length; j++)
                 {
                     Console.Write($"{Matr[i][j],5} "); //ВЫВОД матрицы  
-
                 }
-
                 Console.WriteLine();
             }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
         }
     }
 }
