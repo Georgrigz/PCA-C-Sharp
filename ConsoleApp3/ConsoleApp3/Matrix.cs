@@ -292,7 +292,7 @@ namespace ConsoleApp3
             }
             return matrix;
         }
-
+        
         public static void Print(double[][] Matr)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
