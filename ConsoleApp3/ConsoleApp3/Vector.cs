@@ -8,7 +8,7 @@ namespace ConsoleApp3
 {
     internal class Vector
     {
-        public static double Mean(double[] X) => Math.Round(X.Sum() / X.Length,2);
+        public static double Mean(double[] X) => X.Sum() / X.Length;
 
         public static double Spread(double[] X, double mean)
         {
@@ -85,7 +85,7 @@ namespace ConsoleApp3
             double[] res = new double[a.Length];
             for (int i = 0; i < a.Length; i++)
             {
-                res[i] = Math.Round(a[i] * k,2);
+                res[i] = a[i] * k;
             }
             return res;
         }

@@ -8,12 +8,6 @@ namespace ConsoleApp3
 {
     internal class Matrix
     {
-
-        public static double[] EigenValues(double[][]a)
-        {
-            return DiagVector(QRIteationBasic(a, 10));
-        }
-
         public static double[] DiagVector(double[][] a)
         {
             double[] result = new double[a.Length];
@@ -24,21 +18,6 @@ namespace ConsoleApp3
             return result;
         }
 
-        public static double[][] QRIteationBasic(double[][] matrix, int max_iterations)
-        {
-
-            double[][] T = Matrix.MatrixDuplicate(matrix);
-            IList<double[][]> QR;
-
-            for (int i = 0; i < max_iterations; i++)
-            {
-                QR = QRGramShmidt(T);
-                T = MatrixProduct( QR[1],QR[0]);
-            }
-
-            return T;
-        }
-
         public static double[][] Meaning(double[][] matrix)
         {
             double[][] res = MatrixCreate(matrix.Length, matrix[0].Length);
@@ -47,58 +26,9 @@ namespace ConsoleApp3
                 double mean = Vector.Mean(matrix[i]);
                 for (int j = 0; j < matrix[i].Length; j++)
                 {
-                    res[i][j] = Math.Round(matrix[i][j] - mean,2);
+                    res[i][j] = matrix[i][j] - mean;
                 }
             }
-            return res;
-        }
-
-        public static IList<double[][]> QRGramShmidt(double[][] a)
-        {
-            IList<double[][]> res = new List<double[][]>();
-            int m = a.Length;
-            //Console.ForegroundColor= ConsoleColor.Red;
-            //Console.WriteLine(m);
-            int n = a[0].Length;
-            //Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.WriteLine(n);
-
-
-            double[][] A = MatrixDuplicate(a);
-
-            double[][] Q = MatrixCreate(m, n);
-            double[][] R = MatrixCreate(n, n);
-
-            for (int i = 0; i < m; i++)
-            {
-                Q[i][0] = A[i][0];
-            }
-
-            R[0][0] = 1;
-
-            IList<double[]> columns = DecomposeMatrixToColumnVectors(A);
-
-            for (int k = 0; k < n; k++)
-            {
-                R[k][k] = Vector.NormOfVector(columns[k]);
-
-                for (int i = 0; i < m; i++)
-                    Q[i][k] = A[i][k] *1/R[k][k];
-                IList<double[]> Qcol = DecomposeMatrixToColumnVectors(Q);
-
-                for (int j = k + 1; j < n; j++)
-                {
-                    R[k][j] = Vector.ScalarVectorProduct(Qcol[k], columns[j]);
-
-                    for (int i = 0; i < m; i++)
-                        A[i][j] = A[i][j] - Q[i][k] * R[k][j];
-
-                }  
-            }
-
-            res.Add(Q);
-            res.Add(R);
-
             return res;
         }
 
@@ -189,6 +119,7 @@ namespace ConsoleApp3
                 }
             }
         }
+        
         public static double[][] ConvertMatrToArrArr(double[,] matr)
         {
             double[][] result = MatrixCreate(matr.GetLength(0), matr.GetLength(1));
@@ -283,11 +214,11 @@ namespace ConsoleApp3
             return result;
         }
 
-        static double[][] MatrixDuplicate(double[][] matrix)
+        public static double[][] MatrixDuplicate(double[][] matrix)
         {
             // Предполагается, что матрица не нулевая
             double[][] result = MatrixCreate(matrix.Length, matrix[0].Length);
-            for (int i = 0; i < matrix.Length; ++i) // Копирование значений
+            for (int i = 0; i < matrix.Length; ++i) // Коxxпирование значений
                 for (int j = 0; j < matrix[i].Length; ++j)
                     result[i][j] = matrix[i][j];
             return result;

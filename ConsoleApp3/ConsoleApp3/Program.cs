@@ -8,11 +8,15 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            double[][] marks = new double[][]
+            double[][] marks = new double[][] 
                 {
-                   new []{ 2.5, 0.5, 2.2, 1.9, 3.1, 2.3, 2.0, 1.0, 1.5, 1.1},
-                   new []{ 2.4, 0.7, 2.9, 2.2, 3.0, 2.7, 1.6, 1.1, 1.6, 0.9 }
-                //new double[]{ 2.5, 0.5, 2.2, 1.9, 3.1,2.7, 1.6, 1.1, 1.6, 0.9 }
+                    new []{  1.0,           2,           3,          4,           5,          
+                       6,           7,           8,           9,          10       },
+                    new []{ 2.73446908 ,  4.35122722  , 7.21132988 , 11.24872601 ,  9.58103444   ,
+                       12.09865079 , 13.78706794 , 13.85301221,  15.29003911,  18.0998018},
+                    new []{0.477041630296522, 3.74049076332734, 0.236134687082905, 7.83950773432828, 10.87222775485, 17.7559589612093, 
+                        14.5838508105762, 
+                        5.43233595668913, 18.0826615579811, 3.58967947940793 }
                   
                 };
             double[] means = new double[marks.Length];
@@ -21,8 +25,15 @@ namespace ConsoleApp3
             {
                 means[i] = Vector.Mean(marks[i]);
             }
+            Random rnd = new Random();
+            double[] RandomValuesCreation = new double[10];
             
-
+            for (int i = 0; i < RandomValuesCreation.Length; i++)
+            {
+                RandomValuesCreation[i] = (i+1) * 3 *rnd.NextDouble( );
+            }
+            Console.WriteLine("Рандомная генерация");
+            Vector.Print(RandomValuesCreation);
             Console.WriteLine(  );
             Console.WriteLine("Начальная матрица");
             Matrix.Print(marks);
@@ -55,38 +66,36 @@ namespace ConsoleApp3
             
             eigenvectors = Matrix.MatrixTranspose(eigenvectors);
             
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine(meanData.Length+"  "+meanData[0].Length);
+            //Console.ForegroundColor = ConsoleColor.DarkBlue;
+            //Console.WriteLine(meanData.Length+"  "+meanData[0].Length);
             
             Console.WriteLine();
 
-            Console.ReadKey();
+            //Console.ReadKey();
             meanData = Matrix.MatrixTranspose(meanData);
             //double[]NewData = Matrix.MatrixCreate(1, MeanDATA[0].Length);
-            double []newData = Matrix.Dot(meanData,  eigenvectors[1]);
+            double []newData = Matrix.Dot(meanData,  eigenvectors[2]);
             //IList<double[]> eigv = Matrix.DecomposeMatrixToColumnVectors(eigenvectors);
             Vector.Print(newData);
+            //eigenvectors = Matrix.MatrixTranspose(eigenvectors);
             Console.WriteLine();
             //Console.WriteLine(NewData[8]);
             
             Console.WriteLine("__________________________________________________");
+
+            double[][] duoEigenVectors = Matrix.MatrixDuplicate(eigenvectors);
+            duoEigenVectors.
+           
+            double[][] restoredData = Matrix.MatrixCreate(10, 3);
+            //Matrix.Print(restoredData);
+
+            double[][] Rd2 = Matrix.MatrixCreate(10, 3);
             
-            double[] Xrestored = Vector.ScalarToVectorProduct(newData[2], eigenvectors[1]);
+            Rd2 = Matrix.MatrixProduct()
 
-            for (int i = 0; i < Xrestored.Length; i++)
-            {
-                Xrestored[i] += means[i];
-            }
-
-            Vector.Print(Xrestored);
-            Console.WriteLine();
-
-            double[][] restoredData = Matrix.MatrixCreate(10, 2);
-            Matrix.Print(restoredData);
-            
             for (int i = 0; i < restoredData.Length; i++)
             {
-                restoredData[i] = Vector.ScalarToVectorProduct(newData[i], eigenvectors[1]);
+                restoredData[i] = Vector.ScalarToVectorProduct(newData[i], eigenvectors[2]);
                 //Vector.Print(restoredData[i]);
                 for (int j = 0; j < means.Length; j++)
                 {
