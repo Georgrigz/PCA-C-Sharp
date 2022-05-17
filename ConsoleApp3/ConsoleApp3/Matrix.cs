@@ -306,6 +306,7 @@ namespace ConsoleApp3
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
+            Console.WriteLine("__________________________");
         }
     }
 }

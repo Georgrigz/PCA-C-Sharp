@@ -71,6 +71,7 @@
       <workItem from="1652301868910" duration="6491000" />
       <workItem from="1652456511655" duration="9760000" />
       <workItem from="1652541159498" duration="4077000" />
+      <workItem from="1652745446516" duration="2477000" />
     </task>
     <servers />
   </component>
@@ -92,26 +93,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConsoleApp3/Matrix.cs</url>
-          <line>122</line>
-          <properties documentPath="C:\Users\amali\Desktop\PCA-C-Sharp\ConsoleApp3\ConsoleApp3\Matrix.cs" initialLine="122" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

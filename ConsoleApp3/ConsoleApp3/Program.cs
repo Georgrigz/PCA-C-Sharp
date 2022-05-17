@@ -27,16 +27,16 @@ namespace ConsoleApp3
             {
                 means[i] = Vector.Mean(marks[i]);
             }
-            Random rnd = new Random();
-            double[] RandomValuesCreation = new double[10];
+            //Random rnd = new Random();
+            //double[] RandomValuesCreation = new double[10];
             
-            for (int i = 0; i < RandomValuesCreation.Length; i++)
-            {
-                RandomValuesCreation[i] = (i+1) * 3 *rnd.NextDouble( );
-            }
-            Console.WriteLine("Рандомная генерация");
-            Vector.Print(RandomValuesCreation);
-            Console.WriteLine(  );
+            //for (int i = 0; i < RandomValuesCreation.Length; i++)
+            //{
+            //    RandomValuesCreation[i] = (i+1) * 3 *rnd.NextDouble( );
+            //}
+            //Console.WriteLine("Рандомная генерация");
+            //Vector.Print(RandomValuesCreation);
+            //Console.WriteLine(  );
             Console.WriteLine("Начальная матрица");
             Matrix.Print(marks);
             
@@ -81,7 +81,7 @@ namespace ConsoleApp3
             Console.WriteLine();
             //Console.WriteLine(NewData[8]);
             
-            Console.WriteLine("__________________________________________________");
+            //Console.WriteLine("__________________________________________________");
 
             double[][] duoEigenVectors = Matrix.MatrixDuplicate(eigenvectors);
             //duoEigenVectors.
@@ -106,11 +106,10 @@ namespace ConsoleApp3
             }
             
             Console.WriteLine("");
-            Console.WriteLine("__________________________________________________");
             Matrix.Print(restoredData);
             //double[] Xrestored = Vector.ScalarToVectorProduct(NewData[9], eigenvectors[1]);
             marks = Matrix.MatrixTranspose((marks));
-            Console.WriteLine("__________________________________________________");
+
             //Matrix.Print(restoredData);
             Matrix.Print(marks);
   
@@ -121,9 +120,6 @@ namespace ConsoleApp3
             //XRestored = Matrix.Dot(NewData, eigv[1]);
             //Console.WriteLine();
             //Matrix.Print(XRestored);   
-                
-            
-
             Console.ReadKey();
 
         }
