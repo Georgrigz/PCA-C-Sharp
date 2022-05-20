@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Runtime.InteropServices;
 
 
 namespace ConsoleApp3
@@ -10,18 +11,15 @@ namespace ConsoleApp3
         {
             double[][] marks = new double[][] 
                 {
-                    new []{1.0        ,   2.0        ,   3.0        ,   4.0        ,
-          5.0        ,   6.0        ,   7.0        ,   8.0        ,
-          9.0      ,  10.0              },
-                    new []{ -1.03251297,   3.64527379,   7.61009982,   9.10397504,
-         10.51532508,   7.9597771 ,  11.2355247 ,  17.594655  ,
-         18.20544082,  17.34616815},
-                    new []{-5.60401268,  10.06795406,  21.41277131,  27.59801065,
-         34.92297529,  22.34955146,  34.75353587,  50.96007769,
-         54.74286992,  50.66176108},
-                    new []{-27.05688438,  40.49541   ,  80.12802275, 112.96285875,
-        145.25985257,  85.40388321, 138.22364201, 198.6238365 ,
-        216.7731859 , 201.77255413}
+                    new []{ 1.0        ,  2.0        ,  3.0        ,  4.0       ,  5.0        ,
+         6.0        ,  7.0        ,  8.0        ,  9.0        , 10.0         },
+                    new []{ 2.88728642,  2.49420833,  2.20845789,  6.43993946, 10.78518991,
+        10.87374318, 14.33891091, 16.79766407, 16.97181491, 20.85161094},
+                    new []{11.01792737, 12.38619263, 11.48804931, 24.10099224, 30.21117481,
+        32.83617975, 42.4237342 , 51.14366228, 47.1998583 , 60.19540684},
+                    new []{98.47615116,  20.46282367,  67.17093415,  77.66304739,
+        142.25100662, 127.60618803, 199.82062948, 110.97707692,
+        218.21847896, 269.12150528}
 
                 };
             double[] means = new double[marks.Length];
@@ -30,6 +28,8 @@ namespace ConsoleApp3
             {
                 means[i] = Vector.Mean(marks[i]);
             }
+
+
             Console.WriteLine("Начальная матрица");
             Matrix.Print(marks);
             
@@ -57,18 +57,31 @@ namespace ConsoleApp3
             
             Console.WriteLine("Собственные векторы");
             Matrix.Print(eigenvectors);
+            //Vector.Print(eigenvectors[]);
             Console.WriteLine();
             
+            
+            //
+            
+            eigenvectors = Matrix.SortEigenVectors(eigenvalues, eigenvectors);
             eigenvectors = Matrix.MatrixTranspose(eigenvectors);
+            Matrix.Print(eigenvectors);
 
-            
             Console.WriteLine();
 
+            double[][] Ev2 = new double[2][];
+            Ev2[0] = eigenvectors[2];
+            Ev2[1] = eigenvectors[3];
+
+            Ev2 = Matrix.MatrixTranspose(Ev2);
             //Console.ReadKey();
             meanData = Matrix.MatrixTranspose(meanData);
             //double[]NewData = Matrix.MatrixCreate(1, MeanDATA[0].Length);
             double []newData = Matrix.Dot(meanData,  eigenvectors[3]);
+            
             //IList<double[]> eigv = Matrix.DecomposeMatrixToColumnVectors(eigenvectors);
+            
+            Console.WriteLine("Один вектор");
             Vector.Print(newData);
             //eigenvectors = Matrix.MatrixTranspose(eigenvectors);
             Console.WriteLine();
@@ -76,36 +89,51 @@ namespace ConsoleApp3
             
             //Console.WriteLine("__________________________________________________");
 
-            double[][] duoEigenVectors = Matrix.MatrixDuplicate(eigenvectors);
+           // double[][] duoEigenVectors = Matrix.MatrixDuplicate(eigenvectors);
             //duoEigenVectors.
            
-            double[][] restoredData = Matrix.MatrixCreate(10, 3);
+            double[][] restoredData = Matrix.MatrixCreate(10, 4);
             //Matrix.Print(restoredData);
-
-            double[][] Rd2 = Matrix.MatrixCreate(10, 3);
-            
-            //Rd2 = Matrix.MatrixProduct()
-
             for (int i = 0; i < restoredData.Length; i++)
             {
                 restoredData[i] = Vector.ScalarToVectorProduct(newData[i], eigenvectors[3]);
-                //Vector.Print(restoredData[i]);
                 for (int j = 0; j < means.Length; j++)
                 {
                     restoredData[i][j] += means[j];
                 }
-                //Vector.Print(restoredData[i]);
-                //Console.WriteLine();
+
             }
-            Console.WriteLine("Востановленные данные");
+            
             Console.WriteLine("");
+            Console.WriteLine("Один вектор");
+            
             Matrix.Print(restoredData);
-          
+            
+            double[][] newData2 = Matrix.MatrixProduct(meanData, Ev2);
+            Console.WriteLine("Два вектора");
+            Matrix.Print(newData2);
+            
+            
+            double[][] restoredData2 = Matrix.MatrixCreate(10, 4);
+
+            Ev2 = Matrix.MatrixTranspose(Ev2);
+
+            restoredData = Matrix.MatrixProduct(newData2, Ev2);
+            //for (int i = 0; i < restoredData2.Length; i++)
+            //{
+            //    for (int j = 0; j < means.Length; j++)
+            //    {
+            //        restoredData2[i][j] += means[j];
+            //    }
+            //}
+            
+
+            Console.WriteLine("Два вектора");
+            Matrix.Print(restoredData2);
+            //double[] Xrestored = Vector.ScalarToVectorProduct(NewData[9], eigenvectors[1]);
             marks = Matrix.MatrixTranspose((marks));
 
-            //Matrix.Print(restoredData);
-            Matrix.Print(marks);
-   
+            Matrix.Print(marks);   
             Console.ReadKey();
 
         }

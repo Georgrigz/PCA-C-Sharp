@@ -110,6 +110,18 @@ namespace ConsoleApp3
             Console.WriteLine();
             Console.WriteLine("_________________________");
         }
+        
+        public static void Print(int[] Vector)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            for (int i = 0; i < Vector.Length; i++)
+            {
+                Console.Write($"{Vector[i],5} "); //ВЫВОД матрицы  
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine("_________________________");
+        }
 
         public static double[] Reverse(double[] a)
         {

@@ -286,11 +286,40 @@ namespace ConsoleApp3
                 matrix[i] = new double[Matr.Length];
                 for (int j = 0; j < Matr.Length; j++)
                 {
-
                     matrix[i][j] = Vector.Covariance(Matr[i], Matr[j]);
                 }
             }
             return matrix;
+        }
+
+        public static double[][] SortEigenVectors(double[] eigenvalues, double[][] eigenvectors)
+        {
+            double[][] res = new double[eigenvectors.Length][]; 
+            double[] copyvalues = new double[eigenvalues.Length];
+            for (int i = 0; i < eigenvalues.Length; i++)
+            {
+                copyvalues[i] = eigenvalues[i];
+            }
+
+            int[] index = new int[eigenvalues.Length];
+            for (int i = 0; i < index.Length; i++)
+            {
+                index[i] = i;
+            }
+
+            Array.Sort(eigenvalues);
+            for (int i = 0; i < eigenvalues.Length ;i++)
+            {
+                index[i] = Array.IndexOf(eigenvalues, copyvalues[i]);
+            }
+
+            for (int i = 0; i < eigenvectors.Length; i++)
+            {
+                res[i] = eigenvectors[index[i]];
+            }
+            Vector.Print(eigenvalues);
+            Vector.Print(index);
+            return res;
         }
         
         public static void Print(double[][] Matr)
