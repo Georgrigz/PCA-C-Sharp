@@ -73,7 +73,13 @@ namespace ConsoleApp3
             Ev2[0] = eigenvectors[2];
             Ev2[1] = eigenvectors[3];
 
+            double[][] Ev3 = new double[3][];
+            Ev3[0] = eigenvectors[1];
+            Ev3[1] = eigenvectors[2];
+            Ev3[2] = eigenvectors[3];
+
             Ev2 = Matrix.MatrixTranspose(Ev2);
+            Ev3 = Matrix.MatrixTranspose(Ev3);
             //Console.ReadKey();
             meanData = Matrix.MatrixTranspose(meanData);
             //double[]NewData = Matrix.MatrixCreate(1, MeanDATA[0].Length);
@@ -117,15 +123,16 @@ namespace ConsoleApp3
             double[][] restoredData2 = Matrix.MatrixCreate(10, 4);
 
             Ev2 = Matrix.MatrixTranspose(Ev2);
+            Matrix.Print(Ev2);
 
-            restoredData = Matrix.MatrixProduct(newData2, Ev2);
-            //for (int i = 0; i < restoredData2.Length; i++)
-            //{
-            //    for (int j = 0; j < means.Length; j++)
-            //    {
-            //        restoredData2[i][j] += means[j];
-            //    }
-            //}
+            restoredData2 = Matrix.MatrixProduct(newData2, Ev2);
+            for (int i = 0; i < restoredData2.Length; i++)
+            {
+                for (int j = 0; j < means.Length; j++)
+                {
+                    restoredData2[i][j] += means[j];
+                }
+            }
             
 
             Console.WriteLine("Два вектора");
@@ -133,6 +140,30 @@ namespace ConsoleApp3
             //double[] Xrestored = Vector.ScalarToVectorProduct(NewData[9], eigenvectors[1]);
             marks = Matrix.MatrixTranspose((marks));
 
+            Console.WriteLine("Три вектора");
+
+            double[][] newData3 = Matrix.MatrixProduct(meanData, Ev3);
+            Matrix.Print(newData3);
+
+            Ev3 = Matrix.MatrixTranspose(Ev3);
+            double[][] restoredData3 = Matrix.MatrixCreate(10, 4);
+            restoredData3 = Matrix.MatrixProduct(newData3, Ev3);
+            for (int i = 0; i < restoredData3.Length; i++)
+            {
+                for (int j = 0; j < means.Length; j++)
+                {
+                    restoredData3[i][j] += means[j];
+                }
+            }
+            
+            Console.WriteLine("Три вектора");
+            Matrix.Print(restoredData3);
+            for (int i = 0; i < marks.Length; i++)
+            {
+                means[i] = Vector.Mean(marks[i]);
+            }
+            
+            
             Matrix.Print(marks);   
             Console.ReadKey();
 
