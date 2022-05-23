@@ -158,12 +158,13 @@ namespace ConsoleApp3
             
             Console.WriteLine("Три вектора");
             Matrix.Print(restoredData3);
-            for (int i = 0; i < marks.Length; i++)
-            {
-                means[i] = Vector.Mean(marks[i]);
-            }
+            //for (int i = 0; i < marks.Length; i++)
+            //{
+            //    means[i] = Vector.Mean(marks[i]);
+            //}
             
-            
+            Console.WriteLine("####################3");
+            //MyPCA.DemensionReduction(marks, 2);
             Matrix.Print(marks);   
             Console.ReadKey();
 
