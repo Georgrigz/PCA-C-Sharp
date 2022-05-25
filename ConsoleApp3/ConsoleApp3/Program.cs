@@ -165,7 +165,11 @@ namespace ConsoleApp3
             
             Console.WriteLine("####################3");
             //MyPCA.DemensionReduction(marks, 2);
-            Matrix.Print(marks);   
+            Matrix.Print(marks);
+            k_Means.kMeans(marks, 3, 30);
+            k_Means.kMeans(restoredData, 3, 30);
+            k_Means.kMeans(restoredData2, 3, 30);
+            k_Means.kMeans(restoredData3,3 ,30);
             Console.ReadKey();
 
         }
