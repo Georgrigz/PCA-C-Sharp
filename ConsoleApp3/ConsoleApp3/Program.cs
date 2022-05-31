@@ -13,8 +13,8 @@ namespace ConsoleApp3
                 {
                     new []{ 1.0        ,  2.0        ,  3.0        ,  4.0       ,  5.0        ,
          6.0        ,  7.0        ,  8.0        ,  9.0        , 10.0         },
-                    new []{ 2.88728642,  2.49420833,  2.20845789,  6.43993946, 10.78518991,
-        10.87374318, 14.33891091, 16.79766407, 16.97181491, 20.85161094},
+                    new []{ 2.73446908  , 4.35122722 ,  7.21132988 , 11.24872601 ,  9.58103444,
+  12.09865079 , 13.78706794 , 13.85301221  ,15.29003911  ,18.0998018},
                     new []{11.01792737, 12.38619263, 11.48804931, 24.10099224, 30.21117481,
         32.83617975, 42.4237342 , 51.14366228, 47.1998583 , 60.19540684},
                     new []{98.47615116,  20.46282367,  67.17093415,  77.66304739,
@@ -42,7 +42,7 @@ namespace ConsoleApp3
             Matrix.Print(meanData);
             
             Console.WriteLine("Коварационная матрица");
-            var cov = Matrix.MatrixCovariance(marks);
+            var cov = Matrix.MatrixCovariance(meanData);
             Matrix.Print(cov);
             Console.WriteLine();
 
@@ -166,10 +166,10 @@ namespace ConsoleApp3
             Console.WriteLine("####################3");
             //MyPCA.DemensionReduction(marks, 2);
             Matrix.Print(marks);
-            k_Means.kMeans(marks, 3, 30);
-            k_Means.kMeans(restoredData, 3, 30);
-            k_Means.kMeans(restoredData2, 3, 30);
-            k_Means.kMeans(restoredData3,3 ,30);
+            k_Means.kMeans(marks, 4, 30);
+            k_Means.kMeans(restoredData, 4, 30);
+            k_Means.kMeans(restoredData2, 4, 30);
+            k_Means.kMeans(restoredData3, 4,30);
             Console.ReadKey();
 
         }

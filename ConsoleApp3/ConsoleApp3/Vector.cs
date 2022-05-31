@@ -20,12 +20,12 @@ namespace ConsoleApp3
             return Math.Sqrt(sum / (X.Length - 1));
         }
 
-        public static double Variance(double[] X, double mean)
+        public static double Variance(double[] X)
         {
             double sum = 0;
             for (int i = 0; i < X.Length; i++)
             {
-                sum += Math.Pow(X[i] - mean, 2);
+                sum += Math.Pow(X[i], 2);
             }
             return sum / (X.Length - 1);
         }
@@ -33,17 +33,10 @@ namespace ConsoleApp3
         public static double Covariance(double[] X, double[] Y)
         {
             double sum = 0;
-            double meanX = Mean(X);
-            double meanY = Mean(Y);
-            //Console.ForegroundColor = ConsoleColor.Green;
-            //Console.WriteLine(meanX+"           "+meanY);
             for (int i = 0; i < X.Length; i++)
-            {
-               
-                sum += (X[i] - meanX) * (Y[i] - meanY);
-                //Console.WriteLine((X[i] - meanX) + "      " + (Y[i] - meanY));
+            {              
+                sum += (X[i]) * (Y[i]);
             }
-
             return sum / (X.Length - 1);
         }
 
