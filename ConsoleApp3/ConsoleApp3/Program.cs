@@ -9,7 +9,7 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            double[][] marks = new double[][] 
+            /*double[][] marks = new double[4][] 
                 {
                     new []{ 1.0        ,  2.0        ,  3.0        ,  4.0       ,  5.0        ,
          6.0        ,  7.0        ,  8.0        ,  9.0        , 10.0         },
@@ -21,7 +21,19 @@ namespace ConsoleApp3
         142.25100662, 127.60618803, 199.82062948, 110.97707692,
         218.21847896, 269.12150528}
 
-                };
+                };*/
+
+            Random rnd = new Random();
+
+            double[][] marks = Matrix.MatrixCreate(4, 100);
+            for (int i = 0; i < marks.Length; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    marks[i][j] = (i + 1)* 1.0 * rnd.Next(0, 50);
+                }
+            }
+
             double[] means = new double[marks.Length];
             
             for (int i = 0; i < marks.Length; i++)
@@ -40,6 +52,8 @@ namespace ConsoleApp3
             var meanData = Matrix.Meaning(marks);
             Console.WriteLine("Усредненные значения");
             Matrix.Print(meanData);
+
+            
             
             Console.WriteLine("Коварационная матрица");
             var cov = Matrix.MatrixCovariance(meanData);
@@ -65,6 +79,9 @@ namespace ConsoleApp3
             
             eigenvectors = Matrix.SortEigenVectors(eigenvalues, eigenvectors);
             eigenvectors = Matrix.MatrixTranspose(eigenvectors);
+            Console.WriteLine("BSM");
+            Matrix.BSM(eigenvalues);
+
             Matrix.Print(eigenvectors);
 
             Console.WriteLine();
@@ -158,13 +175,16 @@ namespace ConsoleApp3
             
             Console.WriteLine("Три вектора");
             Matrix.Print(restoredData3);
+            restoredData = Matrix.MatrixTranspose(restoredData);
+
+
+
             //for (int i = 0; i < marks.Length; i++)
             //{
             //    means[i] = Vector.Mean(marks[i]);
             //}
             
             Console.WriteLine("####################3");
-            //MyPCA.DemensionReduction(marks, 2);
             Matrix.Print(marks);
             k_Means.kMeans(marks, 4, 30);
             k_Means.kMeans(restoredData, 4, 30);

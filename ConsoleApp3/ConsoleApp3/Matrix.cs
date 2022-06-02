@@ -64,10 +64,10 @@ namespace ConsoleApp3
                 {
                     for (int q = p + 1; q < nRows; ++q)
                     {
-                        double g = 1e12 * Math.Abs(matrix[p][ q]);
+                        double g = 1e12 * Math.Abs(matrix[p][q]);
                         if (i >= 3 && Math.Abs(d[p]) > g && Math.Abs(d[q]) > g) matrix[p][ q] = 0.0;
                         else
-                        if (Math.Abs(matrix[p][ q]) > tresh)
+                        if (Math.Abs(matrix[p][q]) > tresh)
                         {
                             double theta = 0.5 * (d[q] - d[p]) / matrix[p][q];
                             double t = 1.0 / (Math.Abs(theta) + Math.Sqrt(1.0 + theta * theta));
@@ -140,6 +140,29 @@ namespace ConsoleApp3
                     result[i, j] = matr[i][j];
                 }
             return result;
+        }
+
+        public static int BSM(double[] eigenvalues)
+        {
+            int res=0;
+            int n = eigenvalues.Length;
+            double[] sl = new double[n];
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = n; j > i+1; j--)
+                {
+                    sl[i] = 1.0/j;
+                }
+                sl[i] = sl[i]/n;
+            }
+            sl = Vector.Reverse(sl);
+            Vector.Print(sl);
+            for (int i = 0; i < n; i++)
+            {
+                if (sl[i] < eigenvalues[i])
+                    res++;
+            }
+            return res;
         }
 
         static double[][] MatrixDecompose(double[][] matrix, out int[] perm, out int toggle)
